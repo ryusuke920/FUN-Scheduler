@@ -214,7 +214,8 @@ AudioPlayer home;//ホーム画面のBGM
 AudioPlayer moneymoney;//購入時のBGM
 AudioPlayer warning;//アラーム音のBGM
 //天気予報について
-String baseURL = "http://weather.livedoor.com/forecast/webservice/json/v1?city=";//参考にする天気予報
+/*
+String baseURL = "http://weather.com/forecast/webservice/json/v1?city=";//参考にする天気予報
 String hakodate = "017010";//函館の天気番号
 String hatinohe="020030";//八戸の天気番号
 String sendai="040010";//仙台の天気番号
@@ -245,6 +246,8 @@ JSONArray forecasts7;//大阪の天気の読み込み？
 JSONArray forecasts8;//広島の天気の読み込み？
 JSONArray forecasts9;//福岡の天気の読み込み？
 JSONArray forecasts10;//那覇の天気の読み込み？
+*/
+
 void setup() {
   size(480, 640);//画面サイズ
   //データの読み込み
@@ -309,6 +312,7 @@ void setup() {
   home=minim.loadFile("home.mp3");
   moneymoney=minim.loadFile("moneymoney.mp3");
   warning=minim.loadFile("warning.mp3");
+  /*
   //気温設定
   JSONObject w1 = loadJSONObject(baseURL + hakodate);//函館の天気予報の読み込み
   JSONObject w2 = loadJSONObject(baseURL + hatinohe);//八戸の天気予報の読み込み
@@ -340,6 +344,7 @@ void setup() {
   forecasts9= w9.getJSONArray("forecasts");
   tenki10 = w10.getString("title");
   forecasts10= w10.getJSONArray("forecasts");
+  */
 }
 void draw() {
   switch(screen) {

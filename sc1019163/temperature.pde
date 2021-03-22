@@ -94,6 +94,7 @@ void temperature() {
     }
   }
 
+/*
   //マウスが乗ると色がつく・天気・気温表示
   //函館の半透明
   if (mouseX>297&&mouseX<342)
@@ -414,6 +415,7 @@ void temperature() {
       }
     }
   }
+*/
 
   //画面切り替え
   if (key==BACKSPACE&&keyPressed==true) {
