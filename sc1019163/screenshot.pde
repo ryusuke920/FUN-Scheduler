@@ -1,5 +1,5 @@
 void screenshot() {
-  String path=System.getProperty("user.home")+"/Desktop/screenshot"+num+".jpg";
+  String path=System.getProperty("user.home")+"/Documents/screenshot/screenshot"+num+".jpg";
 
   //保存
   save(path);
