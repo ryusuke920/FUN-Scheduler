@@ -11,3 +11,4 @@
 [You Tube のリンクへ](https://www.youtube.com/watch?v=CHj34g_Vv3w&ab_channel=YasuyukiSumi)
 
 ## 学内発表時のPDF資料
+[PDF資料へ飛びます](https://github.com/ryusuke920/FUN-Scheduler/blob/main/PDFOfPresentationMaterials/PDFOfPresentationMaterials.pdf)
