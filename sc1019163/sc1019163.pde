@@ -147,9 +147,9 @@ float countq=0.0;//９つ目の四角形の始点のX座標
 float countr=0.0;//９つ目の四角形の横の長さ
 float counts=0.0;//１０つ目の四角形の始点のX座標
 float countt=0.0;//１０つ目の四角形の横の長さ
-int count[]={0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};//四角形を作れるかの判断のための配列
-int am[]={0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};//午前に四角形を作るために判断する配列
-int pm[]={0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};//午後に四角形を作るために判断する配列
+int count[]={0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}; //四角形を作れるかの判断のための配列
+int am[]={0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}; //午前に四角形を作るために判断する配列
+int pm[]={0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}; //午後に四角形を作るために判断する配列
 //timer
 int limitS=0;
 int countS=0;
@@ -160,53 +160,18 @@ int countSS[]={0};
 int coin=1000;//(デモ用)
 int coinCount=0;
 //timetable １・２・３・４・５
-String ns[]={"解析学", "線形代数学", "数学総合演習", "コミュ", "情報機器概論", "科学技術", "リテラシー", "情報表現入門", "VEP"};//need subject(必修科目)
-String cs[]={"余暇と健康", "ロボットの", "科学技術", "認知科学", "物理学入門", "コンピュータ", "と教育", "情報メディア", "社会論", "メディア", "の科学", "芸術論", "人体生理学", "高度ICT演習"};//choice subject(選択科目)
+String ns[] = {"解析学", "線形代数学", "数学総合演習", "コミュ", "情報機器概論", "科学技術", "リテラシー", "情報表現入門", "VEP"}; //need subject(必修科目)
+String cs[] = {"余暇と健康", "ロボットの", "科学技術", "認知科学", "物理学入門", "コンピュータ", "と教育", "情報メディア", 
+              "社会論", "メディア", "の科学", "芸術論", "人体生理学", "高度ICT演習"}; //choice subject(選択科目)
 //その他
 float Color;//グラデーションの設定
 int screen=0;//画面切り替えの変数
+
 //画像設定
-PImage smallbird;
-PImage risu;
-PImage neko;
-PImage cow;
-PImage kani;
-PImage kaba;
-PImage inu;
-PImage turtle;
-PImage tyou;
-PImage tanuki;
-PImage kitune;
-PImage hati;
-PImage panda;
-PImage dolphin;
-PImage karasu;
-PImage tora;
-PImage koara;
-PImage usagi;
-PImage lion;
-PImage pengin;
-PImage kuzira;
-PImage kamereon;
-PImage wani;
-PImage kuma;
-PImage taka;
-PImage syati;
-PImage same;
-PImage obake;
-PImage doragon;
-PImage thiranosaurusu;
-PImage graph;
-PImage memo;
-PImage karennda;
-PImage zikanwari;
-PImage timer;
-PImage ikusei;
-PImage nihon;
-PImage block;
-PImage camera;
-PImage gomi;
-PImage back;
+PImage smallbird, risu, neko, cow, kani, kaba, inu, turtle, tyou, tanuki, kitune, hati, panda, dolphin;
+PImage karasu, tora, koara, usagi, lion, pengin, kuzira, kamereon, wani, kuma, taka, syati, same, obake;
+PImage doragon, thiranosaurusu, graph, memo, karennda, zikanwari, timer, ikusei, nihon, block, camera, gomi, back;
+
 //音楽設定
 import ddf.minim.*;
 Minim minim;
@@ -216,44 +181,44 @@ AudioPlayer warning;//アラーム音のBGM
 //天気予報について
 /*
 String baseURL = "http://weather.com/forecast/webservice/json/v1?city=";//参考にする天気予報
-String hakodate = "017010";//函館の天気番号
-String hatinohe="020030";//八戸の天気番号
-String sendai="040010";//仙台の天気番号
-String tokyo="130010";//東京の天気番号
-String nagoya="230010";//名古屋の天気番号
-String kyoto="260010";//京都の天気番号
-String oosaka="270000";//大阪の天気番号
-String hirosima="340010";//広島の天気番号
-String fukuoka="400010";//福岡の天気番号
-String naha="471010";//那覇の天気番号
-String tenki1;//函館の天気名
-String tenki2;//八戸の天気名
-String tenki3;//仙台の天気名
-String tenki4;//東京の天気名
-String tenki5;//名古屋の天気名
-String tenki6;//京都の天気名
-String tenki7;//大阪の天気名
-String tenki8;//広島の天気名
-String tenki9;//福岡の天気名
-String tenki10;//那覇の天気名
-JSONArray forecasts1;//函館の天気の読み込み？
-JSONArray forecasts2;//八戸の天気の読み込み？
-JSONArray forecasts3;//仙台の天気の読み込み？
-JSONArray forecasts4;//東京の天気の読み込み？
-JSONArray forecasts5;//名古屋の天気の読み込み？
-JSONArray forecasts6;//京都の天気の読み込み？
-JSONArray forecasts7;//大阪の天気の読み込み？
-JSONArray forecasts8;//広島の天気の読み込み？
-JSONArray forecasts9;//福岡の天気の読み込み？
-JSONArray forecasts10;//那覇の天気の読み込み？
-*/
+ String hakodate = "017010";//函館の天気番号
+ String hatinohe="020030";//八戸の天気番号
+ String sendai="040010";//仙台の天気番号
+ String tokyo="130010";//東京の天気番号
+ String nagoya="230010";//名古屋の天気番号
+ String kyoto="260010";//京都の天気番号
+ String oosaka="270000";//大阪の天気番号
+ String hirosima="340010";//広島の天気番号
+ String fukuoka="400010";//福岡の天気番号
+ String naha="471010";//那覇の天気番号
+ String tenki1;//函館の天気名
+ String tenki2;//八戸の天気名
+ String tenki3;//仙台の天気名
+ String tenki4;//東京の天気名
+ String tenki5;//名古屋の天気名
+ String tenki6;//京都の天気名
+ String tenki7;//大阪の天気名
+ String tenki8;//広島の天気名
+ String tenki9;//福岡の天気名
+ String tenki10;//那覇の天気名
+ JSONArray forecasts1;//函館の天気の読み込み？
+ JSONArray forecasts2;//八戸の天気の読み込み？
+ JSONArray forecasts3;//仙台の天気の読み込み？
+ JSONArray forecasts4;//東京の天気の読み込み？
+ JSONArray forecasts5;//名古屋の天気の読み込み？
+ JSONArray forecasts6;//京都の天気の読み込み？
+ JSONArray forecasts7;//大阪の天気の読み込み？
+ JSONArray forecasts8;//広島の天気の読み込み？
+ JSONArray forecasts9;//福岡の天気の読み込み？
+ JSONArray forecasts10;//那覇の天気の読み込み？
+ */
 
 void setup() {
   size(480, 640);//画面サイズ
   //データの読み込み
-  d=loadStrings("typewriter.txt");
-  datax=loadStrings("week1_1019163.txt");//１週目のデータ
-  datay=loadStrings("week2_1019163.txt");//２週目のデータ
+  d = loadStrings("input.txt");
+  datax = loadStrings("week1_1019163.txt");//１週目のデータ
+  datay = loadStrings("week2_1019163.txt");//２週目のデータ
   //フォント設定
   PFont font=createFont("MS Mintyou", 40);
   textFont(font);//フォント設定
@@ -264,7 +229,7 @@ void setup() {
   rectRX = 310;//月を進める四角のY座標
   rectRY = 70;//月を進める四角の長さ
   //メモ帳
-  
+
   //画像ダウンロード
   smallbird=loadImage("img/smallbird.png");
   risu=loadImage("img/risu.png");
@@ -307,6 +272,7 @@ void setup() {
   camera=loadImage("img/camera.png");
   gomi=loadImage("img/gomi.png");
   back=loadImage("img/back.png");
+
   //音声ダウンロード
   minim=new Minim(this);
   home=minim.loadFile("music/home.mp3");
@@ -314,37 +280,37 @@ void setup() {
   warning=minim.loadFile("music/warning.mp3");
   /*
   //気温設定
-  JSONObject w1 = loadJSONObject(baseURL + hakodate);//函館の天気予報の読み込み
-  JSONObject w2 = loadJSONObject(baseURL + hatinohe);//八戸の天気予報の読み込み
-  JSONObject w3 = loadJSONObject(baseURL + sendai);//仙台の天気予報の読み込み
-  JSONObject w4 = loadJSONObject(baseURL + tokyo);//東京の天気予報の読み込み
-  JSONObject w5 = loadJSONObject(baseURL + nagoya);//名古屋の天気予報の読み込み
-  JSONObject w6 = loadJSONObject(baseURL + kyoto);//京都の天気予報の読み込み
-  JSONObject w7 = loadJSONObject(baseURL + oosaka);//大阪の天気予報の読み込み
-  JSONObject w8 = loadJSONObject(baseURL + hirosima);//広島の天気予報の読み込み
-  JSONObject w9 = loadJSONObject(baseURL + fukuoka);//福岡の天気予報の読み込み
-  JSONObject w10 = loadJSONObject(baseURL + naha);//那覇の天気予報の読み込み
-  tenki1 = w1.getString("title");
-  forecasts1 = w1.getJSONArray("forecasts");
-  tenki2 = w2.getString("title");
-  forecasts2= w2.getJSONArray("forecasts");
-  tenki3 = w3.getString("title");
-  forecasts3= w3.getJSONArray("forecasts");
-  tenki4 = w4.getString("title");
-  forecasts4= w4.getJSONArray("forecasts");
-  tenki5 = w5.getString("title");
-  forecasts5= w5.getJSONArray("forecasts");
-  tenki6 = w6.getString("title");
-  forecasts6= w6.getJSONArray("forecasts");
-  tenki7 = w7.getString("title");
-  forecasts7= w7.getJSONArray("forecasts");
-  tenki8 = w8.getString("title");
-  forecasts8= w8.getJSONArray("forecasts");
-  tenki9 = w9.getString("title");
-  forecasts9= w9.getJSONArray("forecasts");
-  tenki10 = w10.getString("title");
-  forecasts10= w10.getJSONArray("forecasts");
-  */
+   JSONObject w1 = loadJSONObject(baseURL + hakodate);//函館の天気予報の読み込み
+   JSONObject w2 = loadJSONObject(baseURL + hatinohe);//八戸の天気予報の読み込み
+   JSONObject w3 = loadJSONObject(baseURL + sendai);//仙台の天気予報の読み込み
+   JSONObject w4 = loadJSONObject(baseURL + tokyo);//東京の天気予報の読み込み
+   JSONObject w5 = loadJSONObject(baseURL + nagoya);//名古屋の天気予報の読み込み
+   JSONObject w6 = loadJSONObject(baseURL + kyoto);//京都の天気予報の読み込み
+   JSONObject w7 = loadJSONObject(baseURL + oosaka);//大阪の天気予報の読み込み
+   JSONObject w8 = loadJSONObject(baseURL + hirosima);//広島の天気予報の読み込み
+   JSONObject w9 = loadJSONObject(baseURL + fukuoka);//福岡の天気予報の読み込み
+   JSONObject w10 = loadJSONObject(baseURL + naha);//那覇の天気予報の読み込み
+   tenki1 = w1.getString("title");
+   forecasts1 = w1.getJSONArray("forecasts");
+   tenki2 = w2.getString("title");
+   forecasts2= w2.getJSONArray("forecasts");
+   tenki3 = w3.getString("title");
+   forecasts3= w3.getJSONArray("forecasts");
+   tenki4 = w4.getString("title");
+   forecasts4= w4.getJSONArray("forecasts");
+   tenki5 = w5.getString("title");
+   forecasts5= w5.getJSONArray("forecasts");
+   tenki6 = w6.getString("title");
+   forecasts6= w6.getJSONArray("forecasts");
+   tenki7 = w7.getString("title");
+   forecasts7= w7.getJSONArray("forecasts");
+   tenki8 = w8.getString("title");
+   forecasts8= w8.getJSONArray("forecasts");
+   tenki9 = w9.getString("title");
+   forecasts9= w9.getJSONArray("forecasts");
+   tenki10 = w10.getString("title");
+   forecasts10= w10.getJSONArray("forecasts");
+   */
 }
 void draw() {
   switch(screen) {
@@ -411,7 +377,8 @@ void draw() {
   //主にメモ帳の文字出力のところ
 
   if (screen==13) {
-    for (h=0; h<3; h++) {//--------キーボード描写
+    for (h=0; h<3; h++) {
+      //--------キーボード描写
       for (f=0; f<4; f++) {
         noStroke();
         fill(#F52F2F);//赤色
@@ -463,12 +430,6 @@ void draw() {
     }
     p=0;
   }
-
-/*  if (screen!=0) {
-    home.play();
-    home.rewind();
-  }*/
-  
 }
 
 //主にカレンダー

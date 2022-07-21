@@ -1,3 +1,7 @@
+void draw_clock() {
+  
+}
+
 void clock() {
   //日本の時計
   background(0);

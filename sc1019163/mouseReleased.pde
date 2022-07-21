@@ -1,19 +1,19 @@
-int e=0;//iの代わり
+int row = 0; //iの代わり
 void mouseReleased() {
-  if (screen==13) {
-    if (G==0) {
-      if (mouseX>=400&&mouseX<=470&&mouseY<=600&&mouseY>=530) {
-        for (int i=0; i<5; i++) {//メモ帳のデータ
-          d[i]=i+1+".";
-        } 
-        saveStrings("typewriter.txt", d);
+  if (screen == 13) {
+    if (G == 0) {
+
+      // 初期化
+      if (mouseX >= 400 && mouseX <= 470 && mouseY <= 630 && mouseY >= 560) {
+        for (int i = 0; i < 5; i++) {
+          d[i] = str(i + 1) + ".";
+        }
+        saveStrings("input.txt", d);
       }
 
-      if (mouseX>=400&&mouseX<=470&&mouseY<=550&&mouseY>=480) {
-        e++;
-        if (e>=5) {// メモデータ消去
-          e=0;
-        }
+      // 改行
+      if (mouseX >= 400 && mouseX <= 470 && mouseY <= 550 && mouseY >= 480) {
+        row += 1;
       }
     }
 
@@ -36,12 +36,12 @@ void mouseReleased() {
         mozi=M[5*Q+3];//右
       }
 
-      G=0;//マウスを離したら、離した状態に
-      H=-1;
-      F=-1;
+      G = 0; //マウスを離したら、離した状態に
+      H = -1;
+      F = -1;
 
-      d[e]+=mozi;//文字列の追加
-      saveStrings("typewriter.txt", d);//セーブ
+      d[row % 5] += mozi;//文字列の追加
+      saveStrings("input.txt", d);//セーブ
     }
   }
 }
